@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 int main(){
@@ -33,14 +34,16 @@ int main(){
     //check that i entered a number
     while (cin.fail()) {
         cin.clear();
-        cin.ignore(1000, '\n')
+        cin.ignore(1000, '\n');
         cout << "Value must be a whole number: " << endl;
         cin >> packs320;
+
     }
  
 
-    //create an intial csv data file if non made
-    //append existing csv with new data
+    ofstream dataFile("flightPack_data.csv", ios::app);
+        dataFile << date << ',' << packs280 << ',' << packs320 << endl;
+        dataFile.close();
 
-
+    return 0;
 }
