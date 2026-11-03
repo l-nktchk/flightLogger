@@ -4,7 +4,8 @@
 #include <sstream>
 using namespace std;
 
-int main(){
+//created logFlight function and inserted flight log code
+void logFlight() {
 
     //creates string date and stores last flight date
     string date;
@@ -46,15 +47,22 @@ int main(){
     dataFile.close();
 
     //reads in file
+    
+}
+
+//created showTotals function to store supporting code 
+void showTotals() {
     ifstream inFile("flightPack_data.csv");
     //variable line will be used to read through different lines of data
     string line;
 
+    //defined totals
     int total280 = 0;
     int total320 = 0;
 
     //while function reads through line and outputs
     while (getline(inFile, line)) {
+        //if csv starts with an empty line it continues instead of crashing
         if (line.empty()) continue;
         stringstream ss(line);
         string dateStr;
@@ -68,13 +76,20 @@ int main(){
 
     }
 
+    //defined total packs
     int packsTotal;
+    //calcuates totals (280s + 320s)
     packsTotal = total280 + total320;
     cout << "Total 280mAh packs flown: " << total280 << endl;
     cout << "Total 320mAh packs flown: " << total320 << endl;
     cout << "Total packs flown: " << packsTotal << endl;
 
     inFile.close();
- 
+}
+
+int main() {
+
+    logFlight();
+    showTotals();
     return 0;
 }
