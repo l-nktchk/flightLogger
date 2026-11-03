@@ -37,13 +37,24 @@ int main(){
         cin.ignore(1000, '\n');
         cout << "Value must be a whole number: " << endl;
         cin >> packs320;
-
     }
- 
-
+    
+    //out file for data
     ofstream dataFile("flightPack_data.csv", ios::app);
         dataFile << date << ',' << packs280 << ',' << packs320 << endl;
         dataFile.close();
 
+    //reads in file
+    ifstream inFile("flightPack_data.csv");
+    //variable line will be used to read through different lines of data
+    string line;
+
+    //while function reads through line and outputs
+    while (getline(inFile, line)) {
+        cout << line << endl; 
+    }
+
+    inFile.close();
+ 
     return 0;
 }
