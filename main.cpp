@@ -88,8 +88,37 @@ void showTotals() {
 }
 
 int main() {
+    int choice;
+    do {
+        //mprints the menu selection
+        cout << "1) Log flight" << endl;
+        cout << "2) Show totals" << endl;
+        cout << "3) Quit" << endl;
+        cout << "Choice: ";
+        cin >> choice;
+        while (cin.fail()) {
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "Value must be between 1-3 " << endl;
+            cin >> choice;
+        }
+        // Log flight menu and run
+        if (choice == 1) {
+            logFlight();
+        }
+        // Show totals menu and run
+        else if (choice == 2) {
+            showTotals();
+        }
+        // Quit and run
+        else if (choice == 3) {
+            cout << "Goodbye" << endl;
+        }
+        //
+        else {
+            cout << "Invalid choice" << endl;
+        }
 
-    logFlight();
-    showTotals();
+    } while (choice != 3);
     return 0;
 }
