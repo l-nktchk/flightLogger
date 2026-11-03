@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 using namespace std;
 
 int main(){
@@ -41,18 +42,37 @@ int main(){
     
     //out file for data
     ofstream dataFile("flightPack_data.csv", ios::app);
-        dataFile << date << ',' << packs280 << ',' << packs320 << endl;
-        dataFile.close();
+    dataFile << date << ',' << packs280 << ',' << packs320 << endl;
+    dataFile.close();
 
     //reads in file
     ifstream inFile("flightPack_data.csv");
     //variable line will be used to read through different lines of data
     string line;
 
+    int total280 = 0;
+    int total320 = 0;
+
     //while function reads through line and outputs
     while (getline(inFile, line)) {
-        cout << line << endl; 
+        if (line.empty()) continue;
+        stringstream ss(line);
+        string dateStr;
+        getline(ss, dateStr, ',');
+        string p280Str;
+        getline(ss, p280Str, ',');
+        total280 += stoi(p280Str);
+        string p320Str;
+        getline(ss, p320Str, ',');
+        total320 += stoi(p320Str);
+
     }
+
+    int packsTotal;
+    packsTotal = total280 + total320;
+    cout << "Total 280mAh packs flown: " << total280 << endl;
+    cout << "Total 320mAh packs flown: " << total320 << endl;
+    cout << "Total packs flown: " << packsTotal << endl;
 
     inFile.close();
  
