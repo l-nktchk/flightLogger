@@ -99,7 +99,7 @@ int main() {
         while (cin.fail()) {
             cin.clear();
             cin.ignore(1000, '\n');
-            cout << "Value must be between 1-3 " << endl;
+            cout << "Value must be a number " << endl;
             cin >> choice;
         }
         // Log flight menu and run
