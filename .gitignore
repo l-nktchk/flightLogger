@@ -1,0 +1,6 @@
+   flightLogger
+   main
+   main.dSYM/
+   .vscode/
+   .DS_Store
+   flightPack_data.csv
